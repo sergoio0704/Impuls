@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 export const LandingPage = () => {
+  function Intro() {
+    const {isAuthenticated} = useContext(AuthContext)
+    if (isAuthenticated) {
+      return <li className="nav__item"><Link className="nav__link" to="/personal">личный кабинет</Link></li>  
+    }
+    return <li className="nav__item"><Link className="nav__link" to="/login">авторизация</Link></li>
+  }
   return (
     <div>
       <header>
@@ -12,12 +21,12 @@ export const LandingPage = () => {
             </div>
             <div className="nav__menu">
               <ul className="nav__list">
-                <li className="nav__item">почему мы?</li>
-                <li className="nav__item">обучение</li>
-                <li className="nav__item">преподаватели</li>
-                <li className="nav__item">отзывы</li>
-                <li className="nav__item">faq</li>
-                <li className="nav__item">личный кабинет</li>
+                <li className="nav__item"><a className="nav__link" href="#about" >Почему мы?</a></li>
+                <li className="nav__item"><a className="nav__link" href="#training">обучение</a></li>
+                <li className="nav__item"><a className="nav__link" href="/">преподаватели</a></li>
+                <li className="nav__item"><a className="nav__link" href="/">отзывы</a></li>
+                <li className="nav__item"><a className="nav__link" href="/">faq</a></li>     
+                <Intro />   
               </ul>
             </div>
           </div>
@@ -42,16 +51,16 @@ export const LandingPage = () => {
               <input 
                 type="text"
                 name="phone" 
-                className="consultation__phone" 
+                className="consultation__phone browser-default" 
                 id="consultationPhone" 
                 placeholder="+7 910 888 23 23"
               />
-              <button className="consultation__button" type="submit" value="Записаться">Записаться</button>
+              <button className="consultation__button browser-default" type="submit" value="Записаться">Записаться</button>
             </form>
             <small className="consultation__policy">
               Нажимая на кнопку, вы соглашаетесь с 
               <span> </span>
-              <a href="/" className="consultation__policy-link"> 
+              <a href="/" className="consultation__policy-link browser-default"> 
                  Политикой 
                 <br /> 
                 конфиденциальности
@@ -59,8 +68,8 @@ export const LandingPage = () => {
             </small>
             <div className="consultation_social">
               <i className="fab fa-vk"></i>
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-youtube"></i>
+              <i className="fab fa-instagram"></i>
+              <i className="fab fa-youtube"></i>
             </div>
           </div>      
         </div>       
@@ -75,7 +84,7 @@ export const LandingPage = () => {
         </div>
       </header>
       <main>
-        <section className="about">    
+        <section className="about" id="about">    
           <div className="gray-bg">
             <div className="container">
                 <div className="about__us">
@@ -162,7 +171,7 @@ export const LandingPage = () => {
             </div>
           </div>
         </section>
-        <section className="training">
+        <section className="training" id="training">
           <div className="darkgray-bg">
             <div className="container">             
               <div className="training__title title">

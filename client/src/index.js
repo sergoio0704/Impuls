@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './sass/main.sass';
 import App from './App';
+import './sass/main.sass';
+import 'materialize-css'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

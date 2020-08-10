@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const {Schema, model, Types} = require('mongoose')
 const Student = require('./Student')
 const Course = require('./Course')
 
@@ -10,8 +10,14 @@ const schema = new Schema({
   lvlAccess: {type: String},
   balance: {type: Number},  
   points: {type: Number},
-  courses: [Course],
-  students: [Student],
+  courses: [{
+    ref: 'Course',
+    type: Types.ObjectId
+  }],
+  students: [{
+    ref: 'Student',
+    type: Types.ObjectId
+  }],
 })
 
 module.exports = model('User', schema)

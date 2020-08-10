@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
-export const PersonalAreaPage = () => {
+export const CoursePage = () => {
   const {user} = useContext(AuthContext)
   return (
     <div>
-      <h1>Личный кабинет</h1>
-      <div>Добро пожаловать {user.firstName} {user.lastName}</div>
+      <h1>Курсы</h1>
+      <div>{user.email}</div>
     </div>
   )
 }
