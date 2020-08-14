@@ -1,0 +1,78 @@
+.nav
+  &-wrapper
+    background: linear-gradient(to right, #e66465 10%, #9198e5)!important
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &-list 
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding-right: 30px
+    flex: 8
+  &-item
+    margin-right: 20px
+    &:last-child
+      width: 200px 
+      border-left: 1px solid #ccc 
+      border-right: 1px solid #ccc
+      margin-right: 0
+      position: relative
+     
+  &-logo 
+    display: flex 
+    flex: 2
+    align-items: center
+    padding-left: 30px   
+  &-img
+    max-width: 140px
+    height: auto
+    width: 140px
+  &-profile
+    display: flex 
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    &:hover
+      background-color: rgba(0, 0, 0, 0.1)
+    &__title 
+      font-size: 1.1rem
+    &__img
+      max-width: 40px 
+      max-height: 40px
+      margin: 0 15px
+.dropdown 
+  &-list
+    position: absolute 
+    z-index: 5
+    width: 100% 
+    background-color: #fff
+    flex-direction: column
+    display: none
+  &-item 
+    width: 100%
+    display: flex
+    outline: none
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    &:nth-child(3)
+      &::after 
+        content: ''
+        display: block 
+        width: 84%
+        margin: 0 auto 
+        background-color: #ccc
+        height: 1px
+    &:last-child 
+      height: 50px
+  &-link 
+    width: 100%
+    color: #000
+    text-align: center
+    outline: none
+    display: flex 
+    justify-content: center 
+    align-items: center
+.dropdown-active
+  display: flex

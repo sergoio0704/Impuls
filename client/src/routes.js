@@ -10,13 +10,16 @@ export const useRoutes = (isAuthenticated, user) => {
   if (isAuthenticated) {
     return (
       <Switch>
+        <Route path="/personal" exact>
+          {!!user && <PersonalAreaPage  />}
+        </Route>
+        <Route path="/course" exact>
+          <CoursePage />
+        </Route>
         <Route path="/" exact>
           <LandingPage />
         </Route>
-        <Route path="/personal" exact>
-          <PersonalAreaPage name={user} />
-        </Route>
-        <Redirect to="/" />
+        <Redirect to="/personal" />
       </Switch>
     )
   }

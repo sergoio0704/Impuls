@@ -1,0 +1,54 @@
+.content
+  &-wrapper
+    width: 100%
+    display: flex 
+    flex-wrap: wrap
+    height: 70vh
+  &-title 
+    color: #fff 
+    font-size: 30px
+    font-weight: 600
+    z-index: 3
+    position: relative
+  &-block 
+    flex-basis: 33.33%
+    height: 420px
+    display: flex 
+    justify-content: center
+    align-items: center 
+    border: 1px solid #ef9a9a 
+    background-size: cover 
+    background-repeat: no-repeat
+    position: relative
+    z-index: 1
+    &:nth-child(1) 
+      background-image: url(/img/content/block-bg/myCourses-bg.jpg)
+    &:nth-child(2) 
+      background-image: url(/img/content/block-bg/catgCourses-bg.jpg)
+    &:nth-child(3) 
+      background-image: url(/img/content/block-bg/bg3.jpg)
+    &:nth-child(4) 
+      background-image: url(/img/content/block-bg/bg4.jpg)
+    &:nth-child(5) 
+      background-image: url(/img/content/block-bg/bg5.jpg)
+    &:nth-child(6) 
+      background-image: url(/img/content/block-bg/bg6.jpg)
+    &:hover 
+      background-size: 110%
+      background-position: 50% 50%
+      cursor: pointer
+      &:after
+        background-color: rgba(0, 0, 0, 0.1)
+    &:hover .content-title
+      color: #fff
+      background-color: #ef9a9a
+      padding: 10px
+      border-radius: 15px
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background-color: rgba(0, 0, 0, 0.7)

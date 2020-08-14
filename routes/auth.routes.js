@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const config = require('config')
 const {Router} = require('express')
-const {check, validationResult} = require('express-validator')
+const {check, validationResult, body} = require('express-validator')
 const User = require('../models/User')
 
 
@@ -15,7 +15,13 @@ router.post(
     check('email', 'Некорректный email').isEmail(),
     check('password', 'Пароль должен содержать от 6 до 32 символов').isLength({min: 6, max: 32}),
     check('firstName', 'Поле \"Имя\" не должно быть пустым').notEmpty(),
-    check('lastName', 'Поле \"Фамилия\" не должно быть пустым').notEmpty()
+    check('lastName', 'Поле \"Фамилия\" не должно быть пустым').notEmpty(),
+    body('passwordСonfirm').custom((value, {req}) => {
+      if (value != req.body.password) {
+        throw new Error('Пароли не совпадают')
+      }
+      return true
+    })
   ],
   async (req, res) => {
     try {

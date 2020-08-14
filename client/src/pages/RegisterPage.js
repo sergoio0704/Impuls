@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useHistory} from 'react-router-dom'
 import { useHttp } from '../hooks/http.hook'
 import { useMessage } from '../hooks/message.hook'
 
 export const RegisterPage = () => {
   const message = useMessage()
+  const history = useHistory()
   const {loading, request, errors, clearError, success, clearSuccess} = useHttp()
   const [form, setForm] = useState({
-    firstName: '', lastName: '', email: '', password: ''
+    firstName: '', lastName: '', email: '', password: '', passwordСonfirm: ''
   })
 
   useEffect( () => {
@@ -27,10 +28,11 @@ export const RegisterPage = () => {
   const registerHandler = async () => {
     try {
       const data = await request('/api/auth/register', 'POST', {...form})
+      history.push('/login')
       console.log('Data', data)
     } catch(e) {}
   }
-
+  
   return (
     <div className="login-bg">
       <div className="login-container">
@@ -44,6 +46,7 @@ export const RegisterPage = () => {
               name="firstName" 
               className="login__input"
               placeholder="Иван"
+              value = {form.firstName}
               onChange={changeHandler}
             />
           </div>
@@ -54,6 +57,7 @@ export const RegisterPage = () => {
               name="lastName" 
               className="login__input"
               placeholder="Иванов"
+              value = {form.lastName}
               onChange={changeHandler}
             />
           </div>
@@ -64,6 +68,7 @@ export const RegisterPage = () => {
               name="email" 
               className="login__input"
               placeholder="you@example.com"
+              value = {form.email}
               onChange={changeHandler}
             />
           </div>
@@ -74,6 +79,18 @@ export const RegisterPage = () => {
               name="password" 
               className="login__input"
               placeholder="password"
+              value = {form.password}
+              onChange={changeHandler}
+            />
+          </div>
+          <div className="login__password login-field">
+            <label htmlFor="passwordСonfirm" className="login__label">Подтвердите пароль</label>
+            <input 
+              type="password" 
+              name="passwordСonfirm" 
+              className="login__input"
+              placeholder="сonfirm password"
+              value = {form.passwordСonfirm}
               onChange={changeHandler}
             />
           </div>
